@@ -18,8 +18,20 @@
     <string name="address_line">Address Line</string>
     <string name="empty_data">Not Data</string>
     <string name="not_follow">Empty Followed</string>
+
+    <string name="title_representative_search">Representative Search</string>
+    <string name="my_representative">My Representative</string>
+    <string name="txt_btn_location">Use My Location</string>
+    <string name="txt_address_line1">Address Line 1</string>
+    <string name="txt_address_line2">Address Line 2</string>
+    <string name="txt_city">City</string>
+    <string name="txt_zip">Zip</string>
     <!-- items-->
     <string name="title_item_election">Address Municipal Election</string>
     <string name="date_item_election">2000-00-00</string>
+    <!-- items-->
+    <string name="position_representative">President of the United States</string>
+    <string name="name_representative">Presindent s name</string>
+    <string name="party_representative">Party</string>
 
 </resources>
