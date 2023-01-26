@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="fragment_voter_info">Voter Info</string>
+    <string name="fragment_elections">Upcoming Elections</string>
+    <string name="fragment_representative">Find Representative</string>
+
     <string name="app_name">Political Preparedness</string>
     <string name="upcoming_elections">Upcoming elections</string>
     <string name="find_representation">Find my representatives</string>
     <string name="description_elections">Image about the elections</string>
+    <string name="saved_election">Saved Elections</string>
+
+    <!-- items-->
+    <string name="title_item_election">Address Municipal Election</string>
+    <string name="date_item_election">2000-00-00</string>
+
 </resources>

@@ -6,8 +6,6 @@ class CivicsHttpClient: OkHttpClient() {
 
     companion object {
 
-        const val API_KEY = BuildConfig.API_KEY
-
         fun getClient(): OkHttpClient {
             return Builder()
                     .addInterceptor { chain ->
@@ -15,7 +13,7 @@ class CivicsHttpClient: OkHttpClient() {
                         val url = original
                                 .url()
                                 .newBuilder()
-                                .addQueryParameter("key", API_KEY)
+                                .addQueryParameter("key", BuildConfig.API_KEY)
                                 .build()
                         val request = original
                                 .newBuilder()

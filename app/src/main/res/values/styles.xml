@@ -9,6 +9,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="main_title">
+        <item name="android:textSize">@dimen/size_title</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="buttonStyle">
         <item name="android:layout_height">@dimen/default_height_button</item>
         <item name="android:layout_width">@dimen/default_width_button</item>
