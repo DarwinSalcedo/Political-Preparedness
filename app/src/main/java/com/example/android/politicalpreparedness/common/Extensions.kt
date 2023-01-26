@@ -4,9 +4,12 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.android.politicalpreparedness.R
 import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.network.models.Division
+import com.google.android.material.snackbar.Snackbar
 
 fun Fragment.setTitle(title: String) {
     if (activity is AppCompatActivity) {
@@ -20,6 +23,13 @@ fun Fragment.setDisplayHomeAsUpEnabled(bool: Boolean) {
             bool
         )
     }
+}
+
+fun Fragment.showSnackbar(message: Int) {
+    val snackBar = Snackbar.make(requireView(),
+        getString(message), Snackbar.LENGTH_LONG)
+    snackBar.view.setBackgroundColor(ContextCompat.getColor(context!!, R.color.error))
+    snackBar.show()
 }
 
 //animate changing the view visibility
@@ -47,7 +57,7 @@ fun formatDivisionVoterInfo(division: Division): String {
     val strBuilder = StringBuilder()
 
     strBuilder.append(division.country)
-    if (division.state != "") {
+    if (division.state.isNotEmpty()) {
         strBuilder.append(",")
         strBuilder.append(division.state)
     }

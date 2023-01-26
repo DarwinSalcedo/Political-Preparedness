@@ -33,5 +33,6 @@
     <string name="position_representative">President of the United States</string>
     <string name="name_representative">Presindent s name</string>
     <string name="party_representative">Party</string>
+    <string name="not_representative">Not found representative</string>
 
 </resources>

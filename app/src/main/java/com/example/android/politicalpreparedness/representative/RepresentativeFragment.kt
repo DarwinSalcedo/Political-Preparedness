@@ -4,12 +4,19 @@ import android.content.Context
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.example.android.politicalpreparedness.R
+import com.example.android.politicalpreparedness.common.showSnackbar
+import com.example.android.politicalpreparedness.election.CONECTION
 import com.example.android.politicalpreparedness.network.models.Address
-import java.util.Locale
+import com.example.android.politicalpreparedness.representative.adapter.RepresentativeListAdapter
+import com.example.android.politicalpreparedness.databinding.FragmentRepresentativeBinding
+import java.util.*
 
 class DetailFragment : Fragment() {
 
@@ -17,21 +24,54 @@ class DetailFragment : Fragment() {
         //TODO: Add Constant for Location request
     }
 
-    //TODO: Declare ViewModel
+    // Declare ViewModel
+    private lateinit var viewModel: RepresentativeViewModel
+    private lateinit var binding: FragmentRepresentativeBinding
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
 
-        //TODO: Establish bindings
+        // Establish bindings
+        viewModel = ViewModelProvider(this).get(RepresentativeViewModel::class.java)
+        binding = FragmentRepresentativeBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
 
-        //TODO: Define and assign Representative adapter
 
-        //TODO: Populate Representative adapter
+        // Define and assign Representative adapter
+        // Populate Representative adapter -> in XML with DataBinding
+        val representativeAdapter = RepresentativeListAdapter()
+        //representativeAdapter.setHasStableIds(true)
+        binding.recyclerRepresentative.adapter = representativeAdapter
+
+
+        viewModel.status.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            if (it == CONECTION.DISCONNECTED) {
+                showSnackbar(R.string.not_representative)
+            }
+        })
+
 
         //TODO: Establish button listeners for field and location search
+        binding.buttonSearch.setOnClickListener {
+            // Hide the keyboard
+            hideKeyboard()
 
-        return inflater.inflate(R.layout.fragment_representative, container, false)
+            // Take the data of EditText and convert to addres
+            viewModel.getAddress(getTextDataBinding())
+
+            // search the representatives with the address
+            viewModel.fetchRepresentatives()
+        }
+
+        binding.buttonLocation.setOnClickListener {
+            hideKeyboard()
+            checkLocationPermissions()
+        }
+
+
+        return binding.root
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -48,9 +88,9 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun isPermissionGranted() : Boolean {
+    private fun isPermissionGranted(): Boolean {
         //TODO: Check if permission is already granted and return (true = granted, false = denied/other)
-        return true
+        return false
     }
 
     private fun getLocation() {
@@ -58,13 +98,27 @@ class DetailFragment : Fragment() {
         //TODO: The geoCodeLocation method is a helper function to change the lat/long location to a human readable street address
     }
 
+    private fun setTextDataBinding() {
+
+    }
+
+    private fun getTextDataBinding(): Address {
+        return Address(
+            line1 = binding.addressLine1.text.toString(),
+            line2 = binding.addressLine2.text.toString(),
+            city = binding.city.text.toString(),
+            state = binding.state.selectedItem.toString(),
+            zip = binding.zip.text.toString()
+        )
+    }
+
     private fun geoCodeLocation(location: Location): Address {
         val geocoder = Geocoder(context, Locale.getDefault())
         return geocoder.getFromLocation(location.latitude, location.longitude, 1)
-                .map { address ->
-                    Address(address.thoroughfare, address.subThoroughfare, address.locality, address.adminArea, address.postalCode)
-                }
-                .first()
+            .map { address ->
+                Address(address.thoroughfare, address.subThoroughfare, address.locality, address.adminArea, address.postalCode)
+            }
+            .first()
     }
 
     private fun hideKeyboard() {
