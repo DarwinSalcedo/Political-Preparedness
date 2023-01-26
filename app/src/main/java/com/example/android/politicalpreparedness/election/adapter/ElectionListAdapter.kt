@@ -1,5 +1,5 @@
 package com.example.android.politicalpreparedness.election.adapter
-
+/*
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.android.politicalpreparedness.databinding.ViewholderElectionBinding
@@ -14,7 +14,7 @@ class ElectionListAdapter(private val clickListener: ElectionListener): ListAdap
     //TODO: Bind ViewHolder
 
     //TODO: Add companion object to inflate ViewHolder (from)
-}
+}*/
 
 //TODO: Create ElectionViewHolder
 
