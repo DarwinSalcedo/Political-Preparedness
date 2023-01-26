@@ -9,7 +9,13 @@
     <string name="find_representation">Find my representatives</string>
     <string name="description_elections">Image about the elections</string>
     <string name="saved_election">Saved Elections</string>
-
+    <string name="election_info">Election Information</string>
+    <string name="voting_loc">Voting Locations</string>
+    <string name="ballot_info">Ballot Information</string>
+    <string name="follow">Follow Election</string>
+    <string name="allow_address">Correspondence Address</string>
+    <string name="address_line">Address Line</string>
+    <string name="empty_data">Not Data</string>
     <!-- items-->
     <string name="title_item_election">Address Municipal Election</string>
     <string name="date_item_election">2000-00-00</string>
