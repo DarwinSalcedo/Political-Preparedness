@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_padding">8dp</dimen>
+    <dimen name="default_height_button">48dp</dimen>
+    <dimen name="default_width_button">0dp</dimen>
+    <dimen name="radius_10dp_button">10dp</dimen>
+    <dimen name="dimen_16dp">16dp</dimen>
+    <dimen name="medium_text_size">16sp</dimen>
 
-    <!-- TODO: Add necessary dimension values -->s
 
 </resources>
