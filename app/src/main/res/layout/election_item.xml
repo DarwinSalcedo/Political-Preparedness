@@ -18,26 +18,25 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_padding"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="@dimen/space_low"
             android:text="@{election.name}"
-            tools:text="@string/title_item_election"
             android:textSize="@dimen/size_title_item"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/title_item_election"/>
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/default_padding"
-            android:text="@{election.electionDay.toString()}"
-            tools:text="@string/date_item_election"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:textDate="@{election.electionDay}"
+            android:textSize="@dimen/size_minimum"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:text="@string/date_item_election"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

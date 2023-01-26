@@ -36,10 +36,9 @@ class ElectionsFragment : Fragment() {
 
         // Link elections to voter info
         viewModel.navigateToDetailElection.observe(viewLifecycleOwner, Observer { election ->
-            if (election != null) {
+            election?.let {
                 findNavController().navigate(ElectionsFragmentDirections.actionElectionsFragmentToVoterInfoFragment(
-                    election.id,
-                    election.division))
+                    it))
                 viewModel.onElectionNavigated()
             }
         })
