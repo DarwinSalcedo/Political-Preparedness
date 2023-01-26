@@ -1,9 +1,9 @@
 package com.example.android.politicalpreparedness.election
 
-import android.app.Application
 import androidx.lifecycle.*
 import com.example.android.politicalpreparedness.common.convertAddress
 import com.example.android.politicalpreparedness.common.formatDivisionVoterInfo
+import com.example.android.politicalpreparedness.database.ElectionRepository
 import com.example.android.politicalpreparedness.network.CivicsApi
 import com.example.android.politicalpreparedness.network.models.Address
 import com.example.android.politicalpreparedness.network.models.Election
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class VoterInfoViewModel(
-    private val database: Application,
+    private val repository: ElectionRepository,
     private val election: Election
 ) : ViewModel() {
 
@@ -29,11 +29,16 @@ class VoterInfoViewModel(
 
     val showNoData: MutableLiveData<Boolean> = MutableLiveData()
 
+    private val _stateFollowed = MutableLiveData<Boolean>(false)
+    val stateFollowed: LiveData<Boolean>
+        get() = _stateFollowed
+
 
     // Add var and methods to populate voter info
     init {
         viewModelScope.launch {
             serviceVoterInfo()
+            _stateFollowed.value = repository.isFollowed(election)
         }
     }
 
@@ -66,12 +71,20 @@ class VoterInfoViewModel(
     }
 
 
-    //TODO: Add var and methods to save and remove elections to local database
-    //TODO: cont'd -- Populate initial state of save button to reflect proper action based on election saved status
-
+    fun onFollowedClick() {
+        viewModelScope.launch {
+            if (_stateFollowed.value!!) {
+                repository.delFollowed(election)
+            } else {
+                repository.addFollowed(election)
+            }
+            _stateFollowed.value = repository.isFollowed(election)
+        }
+    }
     /**
-     * Hint: The saved state can be accomplished in multiple ways. It is directly related to how elections are saved/removed from the database.
+     * Hint: The saved state can be accomplished in multiple ways. It is directly related to how elections are saved/removed from the repository.
      */
 }
 
 enum class CONECTION { CONNECTED, DISCONNECTED }
+enum class ISFOLLOWED {FOLLOWED, UNFOLLOWED}

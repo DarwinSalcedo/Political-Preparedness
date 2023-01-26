@@ -13,6 +13,7 @@
     <string name="voting_loc">Voting Locations</string>
     <string name="ballot_info">Ballot Information</string>
     <string name="follow">Follow Election</string>
+    <string name="unfollow">Unfollow Election</string>
     <string name="allow_address">Correspondence Address</string>
     <string name="address_line">Address Line</string>
     <string name="empty_data">Not Data</string>
