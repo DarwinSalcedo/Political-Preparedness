@@ -17,6 +17,7 @@
     <string name="allow_address">Correspondence Address</string>
     <string name="address_line">Address Line</string>
     <string name="empty_data">Not Data</string>
+    <string name="not_follow">Empty Followed</string>
     <!-- items-->
     <string name="title_item_election">Address Municipal Election</string>
     <string name="date_item_election">2000-00-00</string>
