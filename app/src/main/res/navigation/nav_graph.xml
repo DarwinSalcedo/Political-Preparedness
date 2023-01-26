@@ -13,10 +13,14 @@
         tools:layout="@layout/fragment_launch">
         <action
             android:id="@+id/action_launchFragment_to_representativeFragment"
-            app:destination="@id/representativeFragment" />
+            app:destination="@id/representativeFragment"
+            app:enterAnim="@anim/animation_in"
+            app:popEnterAnim="@anim/animation_out" />
         <action
             android:id="@+id/action_launchFragment_to_electionsFragment"
-            app:destination="@id/electionsFragment" />
+            app:destination="@id/electionsFragment"
+            app:enterAnim="@anim/animation_in"
+            app:popEnterAnim="@anim/animation_out" />
     </fragment>
 
     <fragment
