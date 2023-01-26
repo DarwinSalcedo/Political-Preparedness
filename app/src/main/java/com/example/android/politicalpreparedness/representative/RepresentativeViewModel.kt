@@ -58,7 +58,7 @@ class RepresentativeViewModel : ViewModel() {
     // Create function get address from geo location
     // Create function to get address from individual fields
     fun getAddress(address: Address) {
-        _address.postValue(address)
+        _address.value = address
     }
 
 

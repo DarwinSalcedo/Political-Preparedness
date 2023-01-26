@@ -27,7 +27,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- TODO: Add data binding value -->
         <!-- Add visual styling and content -->
         <EditText
             android:id="@+id/address_line_1"
@@ -41,7 +40,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_title" />
 
-        <!-- TODO: Add data binding value -->
         <!-- Add visual styling and content -->
         <EditText
             android:id="@+id/address_line_2"
@@ -50,11 +48,11 @@
             android:layout_height="0dp"
             android:autofillHints=""
             android:hint="@string/txt_address_line2"
+            android:text="@{viewModel.address.line2}"
             android:inputType="textPostalAddress"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_line_1" />
 
-        <!-- TODO: Add data binding value -->
         <!-- Add visual styling and content -->
         <EditText
             android:id="@+id/city"
@@ -63,13 +61,12 @@
             android:layout_height="wrap_content"
             android:autofillHints=""
             android:hint="@string/txt_city"
+            android:text="@{viewModel.address.city}"
             android:inputType="textPostalAddress"
             app:layout_constraintEnd_toStartOf="@id/state"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/address_line_2" />
 
-        <!-- TODO: Add default values from provided resources  -->
-        <!-- TODO: Add data binding value -->
         <!-- Add visual styling and content -->
         <Spinner
             android:id="@+id/state"
@@ -79,12 +76,12 @@
             android:autofillHints=""
             android:entries="@array/states"
             android:inputType="textPostalAddress"
+            app:stateValue="@{viewModel.address.state}"
             app:layout_constraintBottom_toBottomOf="@id/city"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/city"
             app:layout_constraintTop_toTopOf="@id/city" />
 
-        <!-- TODO: Add data binding value -->
         <!-- Add visual styling and content -->
         <EditText
             android:id="@+id/zip"
@@ -93,6 +90,7 @@
             android:textSize="@dimen/size_minimum"
             android:autofillHints=""
             android:hint="@string/txt_zip"
+            android:text="@{viewModel.address.zip}"
             android:inputType="number"
             android:maxLength="5"
             app:layout_constraintEnd_toEndOf="@id/city"
@@ -147,7 +145,6 @@
             motion:listitem="@layout/representative_item" />
 
 
-        <!-- TODO: Add visual styling and content -->
         <TextView
             android:id="@+id/list_placeholder"
             android:layout_width="match_parent"

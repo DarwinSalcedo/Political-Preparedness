@@ -35,4 +35,5 @@
     <string name="party_representative">Party</string>
     <string name="not_representative">Not found representative</string>
 
+    <string name="location_required">Location services must be enabled to use the app</string>
 </resources>
